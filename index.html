@@ -111,6 +111,14 @@
             margin-bottom: 0.4rem;
             line-height: 1.75;
         }
+        .prose-editorial code:not(pre code) {
+            background-color: #F1F5F9;
+            color: #0F172A;
+            padding: 0.15rem 0.4rem;
+            border-radius: 0.25rem;
+            font-size: 0.9em;
+            font-family: monospace;
+        }
         /* Custom smooth scrollbar */
         ::-webkit-scrollbar {
             height: 4px;
@@ -196,9 +204,8 @@
     <script>
         const ARTICLES = [
             {
-                meta: "Defense & Aerospace • Technical Breakdown",
-                content: `
-# The F-35 Lightning II: A Comprehensive Analysis of the Joint Strike Fighter
+                meta: "Defense & Aerospace • Full Analysis",
+                content: `# The F-35 Lightning II: A Comprehensive Analysis of the Joint Strike Fighter
 
 ## Abstract
 
@@ -217,10 +224,10 @@ Initiated under the Joint Strike Fighter (JSF) program in the late 1990s, the in
 The F-35 program is divided into three distinct variants designed for specific service branches and operational environments:
 
 | Variant | Service Target | Key Operational Mechanism | Primary Mission Profile |
-| :--- | :--- | :--- | :--- |
-| **F-35A** | U.S. Air Force & Allied Air Forces | Conventional Takeoff and Landing (CTOL), Internal 25mm GAU-22/A cannon | Air superiority, tactical precision strike, SEAD/DEAD |
-| **F-35B** | U.S. Marine Corps, Royal Navy, Italian Navy | Short Take-Off and Vertical Landing (STOVL) via Shaft-Driven Lift Fan | Expeditionary ops, amphibious assault ships |
-| **F-35C** | U.S. Navy & Carrier Fleet | Carrier Variant (CV) with catapult launch & arrested recovery, larger wing area | Carrier strike group long-range operations |
+|---|---|---|---|
+| F-35A | U.S. Air Force & Allied Air Forces | Conventional Takeoff and Landing (CTOL), Internal 25mm GAU-22/A cannon | Air superiority, tactical precision strike, SEAD/DEAD |
+| F-35B | U.S. Marine Corps, Royal Navy, Italian Navy | Short Take-Off and Vertical Landing (STOVL) via Shaft-Driven Lift Fan | Expeditionary ops, amphibious assault ships |
+| F-35C | U.S. Navy & Carrier Fleet | Carrier Variant (CV) with catapult launch & arrested recovery, larger wing area | Carrier strike group long-range operations |
 
 ---
 
@@ -257,9 +264,8 @@ Despite its combat dominance—demonstrating kill ratios exceeding 20:1 during R
 The F-35 Lightning II remains the tactical backbone of NATO and allied air power across Europe, North America, and the Indo-Pacific. Its ability to serve as a high-altitude combat quarterback—directing legacy 4th-gen fighters, ground batteries, and unmanned systems—solidifies its role as a pivotal force multiplier for decades to come.`
             },
             {
-                meta: "Creator Economy • Data & Growth",
-                content: `
-# Why "Consistency" Is Bad Advice for Creators — And What Actually Compounds
+                meta: "Creator Economy • Data Breakdown",
+                content: `# Why "Consistency" Is Bad Advice for Creators — And What Actually Compounds
 
 *The data says post every week. The data also says you'll hit diminishing returns at week 21. Here's what actually builds a durable audience.*
 
@@ -284,7 +290,7 @@ Not quite. The same study revealed a **sharp inflection point at week 21**. Enga
 Kieran Flanagan's *Growth Unhinged* newsletter (50,000+ subscribers, B2B growth) analyzed **120 posts** to see where growth actually came from.
 
 | Post Tier | % of Posts | % of New Subscribers |
-|-----------|------------|----------------------|
+|---|---|---|
 | "Viral" (top 5) | 4% | 14% |
 | Singles & doubles (50–150 subs) | 55% | 55% |
 | Strikeouts (<50 subs, net negative after churn) | 33% | –1% (net loss) |
@@ -373,7 +379,7 @@ The Buffer study's "highly consistent" group posted **20+ weeks out of 26** — 
 What separates the 55% of posts that drive growth from the 33% that lose ground?
 
 | Factor | Strikeout Posts | Compound Posts |
-|--------|-----------------|----------------|
+|---|---|---|
 | **Specificity** | General advice | One problem, one solution, one artifact |
 | **Evidence** | Opinion/anecdote | Data, screenshots, templates, reproducible steps |
 | **Distribution** | "Publish and pray" | SEO-optimized, OPA-placed, lead-magnet-gated |
@@ -386,7 +392,7 @@ What separates the 55% of posts that drive growth from the 33% that lose ground?
 **The Compound Content Checklist** (score each piece 1–5, only publish ≥20/25):
 
 | Criterion | Question |
-|-----------|----------|
+|---|---|
 | **Problem specificity** | Does it solve *one* painful, specific problem for *one* reader type? |
 | **Artifact inclusion** | Is there a downloadable/stealable tool (template, calculator, checklist, script)? |
 | **Evidence density** | Does every claim have data, a screenshot, a log, or a reproducible step? |
@@ -412,7 +418,7 @@ The creators hitting $10K–$200K+/year from newsletters (*Technically* ~$200K, 
 
 - **The Compound Content Checklist** above — use it as your pre-publish filter
 - **Lead magnet template**: "The [Specific Audience] [Specific Problem] Toolkit" (PDF/Notion/Airtable)
-- **Onboarding sequence skeleton**: 
+- **Onboarding sequence skeleton**:
   1. Welcome + best 3 posts
   2. Your mental model/framework (the "why")
   3. The artifact (template/checklist/calculator)
@@ -439,22 +445,21 @@ The creators hitting $10K–$200K+/year from newsletters (*Technically* ~$200K, 
 *If this saved you time, forward it to one creator who's burning out on the consistency treadmill.*`
             },
             {
-                meta: "Conversion Strategy • Freelance & Portfolio",
-                content: `
-# Why Your Portfolio Website Gets Zero Clients — And the One Page That Converts
+                meta: "Conversion Strategy • Full Blueprint",
+                content: `# Why Your Portfolio Website Gets Zero Clients — And the One Page That Converts
 
 *The data says your homepage is a vanity project. Your "Work With Me" page is the only thing that matters. Here's the exact structure that converts cold traffic at 3–5%.*
 
 ---
 
-### The Portfolio Paradox
+## The Portfolio Paradox
 
 **94% of freelancer portfolios get zero inbound leads.** (Upwork 2024 Freelancer Survey, n=12,400)
 
 The same survey found the top 6% who *do* get consistent inbound share one trait: **they don't have a "portfolio" — they have a sales page.**
 
 | Portfolio Type | Avg. Monthly Inbound Leads | Median Project Value |
-|----------------|----------------------------|----------------------|
+|---|---|---|
 | "Here's my work" (gallery + bio) | 0.2 | $800 |
 | "Here's my process" (case studies) | 1.1 | $2,400 |
 | "Here's the outcome you'll get" (sales page) | 4.7 | $6,200 |
@@ -463,7 +468,7 @@ The same survey found the top 6% who *do* get consistent inbound share one trait
 
 ---
 
-### The Eye-Tracking Reality
+## The Eye-Tracking Reality
 
 Nielsen Norman Group (2023, 84 freelancer sites, 240 participants):
 
@@ -475,17 +480,19 @@ Nielsen Norman Group (2023, 84 freelancer sites, 240 participants):
 
 ---
 
-### The One Page That Converts: Anatomy of a 4.2% Conversion Rate
+## The One Page That Converts: Anatomy of a 4.2% Conversion Rate
 
 I analyzed **237 freelancer "Hire Me" pages** (collected via cold outreach + public directories) and tracked conversion via UTM parameters where possible. The top decile (4.2%+ form-to-call rate) all shared this structure:
 
-#### 1. **Headline = Client's Desired Outcome + Your Specific Mechanism**
+### 1. **Headline = Client's Desired Outcome + Your Specific Mechanism**
+
 - ❌ "Senior React Developer for Hire"
 - ✅ "I Help SaaS Founders Ship User-Facing Features 2x Faster — Without Hiring a Full Team"
 
 **Why it works:** Passes the "so what?" test in 2 seconds. Specificity > seniority.
 
-#### 2. **The "Problem Taxonomy" (3–5 bullets, client language)**
+### 2. **The "Problem Taxonomy" (3–5 bullets, client language)**
+
 > "You're likely here because:
 > - Your v1 is live but users churn at onboarding
 > - Your dev team is busy on infrastructure, not features
@@ -493,35 +500,38 @@ I analyzed **237 freelancer "Hire Me" pages** (collected via cold outreach + pub
 
 **Data:** Pages with explicit problem lists converted **2.3x** higher than those listing skills.
 
-#### 3. **One "Flagship" Case Study (Not a Gallery)**
+### 3. **One "Flagship" Case Study (Not a Gallery)**
+
 Structure:
-- Client: [Anonymous descriptor: "Series B fintech, 50-person team"]
-- Problem: [One sentence, their words]
-- Intervention: [What you did, 3 bullets max]
-- Outcome: [One metric that matters to *buyers*: revenue, retention, speed, cost]
-- Timeline: [Calendar time, not hours]
-- Investment: [Range or "starts at $X"]
+- **Client**: [Anonymous descriptor: "Series B fintech, 50-person team"]
+- **Problem**: [One sentence, their words]
+- **Intervention**: [What you did, 3 bullets max]
+- **Outcome**: [One metric that matters to *buyers*: revenue, retention, speed, cost]
+- **Timeline**: [Calendar time, not hours]
+- **Investment**: [Range or "starts at $X"]
 
 **Why one?** Pages with 1 deep case study outperformed 5+ shallow ones by **38%**. Depth signals expertise; breadth signals commodity.
 
-#### 4. **The "How We Work" Section (De-risks the Buyer)**
+### 4. **The "How We Work" Section (De-risks the Buyer)**
 
 | Element | Conversion Lift |
-|---------|-----------------|
+|---|---|
 | Explicit process steps (Discovery → Scope → Build → Handoff) | +22% |
 | Timeline with calendar dates (not "2–4 weeks") | +18% |
 | "You'll get" deliverables list (Figma, code, docs, Loom walkthrough) | +15% |
 | One revision round included, priced thereafter | +11% |
 | **All five combined** | **+67%** |
 
-#### 5. **Social Proof That Isn't Testimonials**
+### 5. **Social Proof That Isn't Testimonials**
+
 Testimonials are expected (low signal). High-signal proof:
 - **Logos** of recognizable companies (even "worked with teams at...")
 - **Specific artifacts**: "See the design system I built for [Client] → [Link]"
 - **Referral line**: "Most clients come from referrals — ask me for intros"
 - **Waitlist note**: "Currently booked through [Date] — 2 slots open in [Month]"
 
-#### 6. **The "Low-Friction First Step" (Not "Contact Me")**
+### 6. **The "Low-Friction First Step" (Not "Contact Me")**
+
 - ❌ "Let's chat!" → Generic contact form
 - ✅ "Book a 20-min Discovery Call → [Calendly link]" Or reply to this email with your project scope → I'll send a 1-pager by tomorrow
 
@@ -529,25 +539,26 @@ Testimonials are expected (low signal). High-signal proof:
 
 ---
 
-### The "Invisible" Pages That Feed the Sales Page
+## The "Invisible" Pages That Feed the Sales Page
 
 Your sales page doesn't need traffic — it needs *qualified* traffic. These three pages do the filtering:
 
 | Page | Purpose | Key Metric |
-|------|---------|------------|
+|---|---|---|
 | **Blog/Articles** | SEO + demonstrate thinking | % readers → sales page (target >8%) |
 | **Case Study Deep-Dives** | Prove depth, rank for "how to [solve X]" | Time on page >3 min |
 | **Lead Magnet** (checklist, calculator, template) | Capture email → nurture sequence | Opt-in rate >15% |
 
 **The funnel:**
+
 > Search "how to reduce SaaS onboarding churn" → Article: "The 3 Onboarding Flows That Cut Churn 40%" → Inline CTA: "Get the Onboarding Audit Checklist" → Email capture → Welcome sequence (3 emails) → Sales page link → Discovery call booked
 
 ---
 
-### The 12-Point Audit (Score Your Page 1–5, Fix <45)
+## The 12-Point Audit (Score Your Page 1–5, Fix <45)
 
 | # | Check | Pass? |
-|---|-------|-------|
+|---|---|---|
 | 1 | Headline names a specific buyer + outcome + mechanism | [ ] |
 | 2 | Problem taxonomy uses *client's words* (not your jargon) | [ ] |
 | 3 | Exactly **one** flagship case study with buyer-relevant metric | [ ] |
@@ -563,7 +574,7 @@ Your sales page doesn't need traffic — it needs *qualified* traffic. These thr
 
 ---
 
-### The Uncomfortable Truth
+## The Uncomfortable Truth
 
 **Your portfolio gallery exists for your ego. Your sales page exists for your rent.**
 
@@ -578,9 +589,9 @@ The freelancers making $15K–$50K+/month consistently **don't have portfolios**
 
 ---
 
-### Steal This: The "Hire Me" Page Template (Notion/Markdown)
+## Steal This: The "Hire Me" Page Template (Notion/Markdown)
 
-```
+\`\`\`
 # [Outcome] for [Specific Buyer] — Without [Painful Alternative]
 
 ## You're here because...
@@ -611,11 +622,11 @@ The freelancers making $15K–$50K+/month consistently **don't have portfolios**
 ## Next Step
 👉 [Book 20-min Discovery Call](Calendly)
 📧 Or email [address] with scope → 1-pager by tomorrow
-```
+\`\`\`
 
 ---
 
-### Distribution Checklist (Built In)
+## Distribution Checklist (Built In)
 
 - [ ] **Tweetable**: "Your portfolio is a museum. Your sales page is a vending machine."
 - [ ] **LinkedIn carousel**: 5 slides = 5 audit checks
@@ -633,7 +644,7 @@ Forward this to one freelancer who needs it — they'll thank you.
 ## Why This Essay Works
 
 | Viral Mechanism | Execution |
-|-----------------|-----------|
+|---|---|
 | **Contrarian with data** | "Portfolios don't work" + 237-page analysis + NNgroup eye-tracking |
 | **Specific framework** | 6-section sales page anatomy + 12-point audit |
 | **Stealable artifact** | Full template + audit checklist (screenshotable) |
@@ -645,98 +656,144 @@ Forward this to one freelancer who needs it — they'll thank you.
 
         let activeTab = 0;
 
-        function sanitizeHtml(text) {
-            const temp = document.createElement('div');
-            temp.textContent = text;
-            return temp.innerHTML;
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function formatInline(text) {
+            let escaped = escapeHtml(text);
+            return escaped
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/`([^`]+)`/g, '<code>$1</code>');
         }
 
         function renderMarkdown(md) {
-            const lines = md.trim().split('\n');
-            let out = '';
+            const rawLines = md.trim().split('\n');
+            let html = '';
+            let inList = false;
             let inTable = false;
             let inCodeBlock = false;
-            let codeContent = '';
+            let codeBuffer = '';
 
-            for (let i = 0; i < lines.length; i++) {
-                let line = lines[i].trim();
+            for (let i = 0; i < rawLines.length; i++) {
+                let line = rawLines[i].trim();
 
-                // Code block handling
+                // Code block toggle
                 if (line.startsWith('```')) {
                     if (inCodeBlock) {
-                        out += `<pre class="bg-slate-900 text-slate-100 p-4 rounded-xl text-xs sm:text-sm font-mono overflow-x-auto my-4 border border-slate-800"><code>${sanitizeHtml(codeContent.trim())}</code></pre>`;
-                        codeContent = '';
+                        html += `<pre class="bg-slate-900 text-slate-100 p-4 rounded-xl text-xs sm:text-sm font-mono overflow-x-auto my-4 border border-slate-800"><code>${escapeHtml(codeBuffer.trim())}</code></pre>`;
+                        codeBuffer = '';
                         inCodeBlock = false;
                     } else {
-                        if (inTable) { out += '</tbody></table>'; inTable = false; }
+                        if (inList) { html += '</ul>'; inList = false; }
+                        if (inTable) { html += '</tbody></table></div>'; inTable = false; }
                         inCodeBlock = true;
                     }
                     continue;
                 }
 
                 if (inCodeBlock) {
-                    codeContent += lines[i] + '\n';
+                    codeBuffer += rawLines[i] + '\n';
                     continue;
                 }
 
+                // Close lists/tables if line is empty
                 if (!line) {
-                    if (inTable) { out += '</tbody></table>'; inTable = false; }
+                    if (inList) { html += '</ul>'; inList = false; }
+                    if (inTable) { html += '</tbody></table></div>'; inTable = false; }
                     continue;
                 }
 
+                // Headings
                 if (line.startsWith('# ')) {
-                    out += `<h1>${sanitizeHtml(line.slice(2))}</h1>`;
+                    if (inList) { html += '</ul>'; inList = false; }
+                    if (inTable) { html += '</tbody></table></div>'; inTable = false; }
+                    html += `<h1>${formatInline(line.slice(2))}</h1>`;
                     continue;
                 }
                 if (line.startsWith('## ')) {
-                    out += `<h2>${sanitizeHtml(line.slice(3))}</h2>`;
+                    if (inList) { html += '</ul>'; inList = false; }
+                    if (inTable) { html += '</tbody></table></div>'; inTable = false; }
+                    html += `<h2>${formatInline(line.slice(3))}</h2>`;
                     continue;
                 }
                 if (line.startsWith('### ')) {
-                    out += `<h3>${sanitizeHtml(line.slice(4))}</h3>`;
+                    if (inList) { html += '</ul>'; inList = false; }
+                    if (inTable) { html += '</tbody></table></div>'; inTable = false; }
+                    html += `<h3>${formatInline(line.slice(4))}</h3>`;
                     continue;
                 }
                 if (line.startsWith('#### ')) {
-                    out += `<h4>${sanitizeHtml(line.slice(5))}</h4>`;
+                    if (inList) { html += '</ul>'; inList = false; }
+                    if (inTable) { html += '</tbody></table></div>'; inTable = false; }
+                    html += `<h4>${formatInline(line.slice(5))}</h4>`;
                     continue;
                 }
+
+                // Blockquotes
                 if (line.startsWith('> ')) {
-                    out += `<blockquote>${sanitizeHtml(line.slice(2))}</blockquote>`;
+                    if (inList) { html += '</ul>'; inList = false; }
+                    if (inTable) { html += '</tbody></table></div>'; inTable = false; }
+                    html += `<blockquote>${formatInline(line.slice(2))}</blockquote>`;
                     continue;
                 }
+
+                // HR
                 if (line === '---') {
-                    out += `<hr class="border-slate-200 my-6">`;
+                    if (inList) { html += '</ul>'; inList = false; }
+                    if (inTable) { html += '</tbody></table></div>'; inTable = false; }
+                    html += `<hr class="border-slate-200 my-6">`;
                     continue;
                 }
+
+                // Tables
                 if (line.startsWith('|')) {
-                    const cells = line.split('|').filter(c => c.trim() !== '').map(c => c.trim());
-                    if (cells[0].startsWith(':---') || cells[0].startsWith('---') || cells[0].startsWith('|-')) continue;
+                    if (inList) { html += '</ul>'; inList = false; }
+                    const cells = line.split('|').map(c => c.trim()).filter((c, idx, arr) => idx > 0 && idx < arr.length - 1);
+                    if (cells.length > 0 && (cells[0].startsWith('---') || cells[0].startsWith(':---') || cells[0].startsWith('|-'))) {
+                        continue;
+                    }
 
                     if (!inTable) {
                         inTable = true;
-                        out += '<table><thead><tr>';
-                        cells.forEach(c => out += `<th>${sanitizeHtml(c).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</th>`);
-                        out += '</tr></thead><tbody>';
+                        html += '<div class="overflow-x-auto my-4"><table class="w-full text-left border-collapse border border-slate-200 font-sans"><thead><tr>';
+                        cells.forEach(c => html += `<th class="bg-slate-100 border border-slate-200 p-3 text-slate-900 font-semibold text-xs sm:text-sm">${formatInline(c)}</th>`);
+                        html += '</tr></thead><tbody>';
                     } else {
-                        out += '<tr>';
-                        cells.forEach(c => out += `<td>${sanitizeHtml(c).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</td>`);
-                        out += '</tr>';
+                        html += '<tr>';
+                        cells.forEach(c => html += `<td class="border border-slate-200 p-3 text-slate-700 text-xs sm:text-sm">${formatInline(c)}</td>`);
+                        html += '</tr>';
                     }
                     continue;
                 }
-                if (line.startsWith('- ') || line.startsWith('* ')) {
-                    out += `<ul><li>${sanitizeHtml(line.slice(2)).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</li></ul>`;
+
+                // Lists
+                if (line.startsWith('- ') || line.startsWith('* ') || /^\d+\.\s/.test(line)) {
+                    if (inTable) { html += '</tbody></table></div>'; inTable = false; }
+                    let itemText = line.replace(/^[-*]\s+/, '').replace(/^\d+\.\s+/, '');
+                    if (!inList) {
+                        inList = true;
+                        html += '<ul class="list-disc pl-5 my-3 space-y-1">';
+                    }
+                    html += `<li>${formatInline(itemText)}</li>`;
                     continue;
                 }
 
-                let formatted = sanitizeHtml(line)
-                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                    .replace(/\*(.*?)\*/g, '<em>$1</em>');
-                out += `<p>${formatted}</p>`;
+                // Normal paragraph
+                if (inList) { html += '</ul>'; inList = false; }
+                if (inTable) { html += '</tbody></table></div>'; inTable = false; }
+                html += `<p>${formatInline(line)}</p>`;
             }
 
-            if (inTable) out += '</tbody></table>';
-            return out;
+            if (inList) html += '</ul>';
+            if (inTable) html += '</tbody></table></div>';
+            return html;
         }
 
         function switchTab(index) {
