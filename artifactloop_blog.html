@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtifactLoop — Insights & Analysis</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#F8FAFC',
+                            100: '#F1F5F9',
+                            200: '#E2E8F0',
+                            600: '#2563EB',
+                            700: '#1D4ED8',
+                            900: '#0F172A',
+                            950: '#020617'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        serif: ['Georgia', 'Cambria', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #FAF9F6;
+            color: #1C1D1F;
+        }
+        .prose-editorial h1 {
+            font-family: 'Georgia', 'Cambria', serif;
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: #111827;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        @media (min-width: 640px) {
+            .prose-editorial h1 { font-size: 2.5rem; }
+        }
+        .prose-editorial h2 {
+            font-family: 'Georgia', 'Cambria', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1E293B;
+            margin-top: 2.25rem;
+            margin-bottom: 0.85rem;
+            border-bottom: 1px solid #E2E8F0;
+            padding-bottom: 0.5rem;
+        }
+        .prose-editorial h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #2563EB;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .prose-editorial p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #334155;
+            margin-bottom: 1.35rem;
+        }
+        .prose-editorial blockquote {
+            border-left: 3px solid #2563EB;
+            padding-left: 1.25rem;
+            margin: 1.75rem 0;
+            color: #475569;
+            font-style: italic;
+            background-color: #F8FAFC;
+            padding-top: 0.85rem;
+            padding-bottom: 0.85rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .prose-editorial table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.75rem 0;
+            font-size: 0.95rem;
+        }
+        .prose-editorial th, .prose-editorial td {
+            border: 1px solid #E2E8F0;
+            padding: 0.85rem 1.1rem;
+            text-align: left;
+        }
+        .prose-editorial th {
+            background-color: #F1F5F9;
+            color: #0F172A;
+            font-weight: 600;
+        }
+        .prose-editorial tr:nth-child(even) {
+            background-color: #FFFFFF;
+        }
+        .prose-editorial ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1.35rem;
+            color: #334155;
+        }
+        .prose-editorial li {
+            margin-bottom: 0.4rem;
+            line-height: 1.75;
+        }
+        /* Custom smooth scrollbar */
+        ::-webkit-scrollbar {
+            height: 4px;
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Sticky Reading Header -->
+    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-30">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-brand-900 text-white flex items-center justify-center font-serif font-bold text-base">
+                    A
+                </div>
+                <span class="font-serif font-bold text-lg text-slate-900 tracking-tight">ArtifactLoop</span>
+                <span class="text-slate-300 font-light">|</span>
+                <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Reader Hub</span>
+            </div>
+            <div class="flex items-center gap-4 text-xs font-medium text-slate-600">
+                <button onclick="copyCurrentLink()" class="px-3 py-1.5 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors flex items-center gap-1.5">
+                    <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
+                    <span>Share Page</span>
+                </button>
+            </div>
+        </div>
+        <!-- Progress Bar -->
+        <div id="scrollProgress" class="h-0.5 bg-brand-600 w-0 transition-all duration-150"></div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 w-full flex-1">
+
+        <!-- Article Navigation Tabs -->
+        <div class="flex border-b border-slate-200 gap-2 sm:gap-6 overflow-x-auto mb-8 text-sm font-medium">
+            <button onclick="switchTab(0)" id="tab-0" class="pb-3 border-b-2 border-brand-600 text-brand-600 font-semibold whitespace-nowrap transition-colors flex items-center gap-2">
+                <i data-lucide="plane" class="w-4 h-4"></i>
+                <span>F-35 Analysis</span>
+            </button>
+            <button onclick="switchTab(1)" id="tab-1" class="pb-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800 whitespace-nowrap transition-colors flex items-center gap-2">
+                <i data-lucide="trending-up" class="w-4 h-4"></i>
+                <span>Creator Consistency</span>
+            </button>
+            <button onclick="switchTab(2)" id="tab-2" class="pb-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800 whitespace-nowrap transition-colors flex items-center gap-2">
+                <i data-lucide="layout" class="w-4 h-4"></i>
+                <span>Portfolio Paradox</span>
+            </button>
+        </div>
+
+        <!-- Article Canvas -->
+        <article class="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-12 shadow-sm">
+            <div id="articleMeta" class="flex items-center gap-2 text-xs font-semibold text-brand-600 uppercase tracking-wider mb-2">
+                Defense & Technology • 10 Min Read
+            </div>
+            <div id="articleContent" class="prose-editorial">
+                <!-- Content inserted dynamically -->
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-500">
+        <div class="max-w-4xl mx-auto px-4">
+            <p>&copy; 2026 ArtifactLoop. Clean, simple editorial experience.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 hidden bg-slate-900 text-white px-4 py-2.5 rounded-lg shadow-lg text-xs font-medium flex items-center gap-2">
+        <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+        <span id="toastText">Link copied to clipboard</span>
+    </div>
+
+    <script>
+        const ARTICLES = [
+            {
+                meta: "Defense & Aerospace • Technical Whitepaper",
+                content: `
+# The F-35 Lightning II: A Comprehensive Analysis of the Joint Strike Fighter
+
+The Lockheed Martin F-35 Lightning II represents the most ambitious and expensive weapons program in military aviation history. As a fifth-generation, single-seat, single-engine, all-weather stealth multirole combat aircraft, the F-35 was designed to replace a wide range of legacy tactical aircraft across multiple service branches.
+
+---
+
+## Program Origins and Strategy
+
+Initiated under the Joint Strike Fighter (JSF) competition in the late 1990s, the program prioritized commonality. By building a core airframe architecture capable of serving the U.S. Air Force, Marine Corps, Navy, and international allies, defense planners aimed to achieve unprecedented economies of scale in manufacturing and logistics.
+
+---
+
+## Variant Architecture
+
+| Variant | Service Target | Core Mechanism | Operational Role |
+| :--- | :--- | :--- | :--- |
+| **F-35A** | Air Force / Allies | Conventional Takeoff (CTOL), Internal Cannon | Air Superiority & Precision Strike |
+| **F-35B** | Marine Corps / RN | Shaft-Driven Lift Fan (SDLF, STOVL) | Expeditionary & Amphibious Ops |
+| **F-35C** | Navy | Larger Wing Area & Reinforced Landing Gear | Carrier Strike Group Operations |
+
+---
+
+## Sensor Fusion & Networked Avionics
+
+Unlike previous generations that relied heavily on dogfighting kinematics, the F-35's primary lethality relies on sensor fusion and situational dominance:
+
+- **AN/APG-81 AESA Radar**: High-resolution synthetic aperture mapping and electronic warfare capabilities.
+- **Distributed Aperture System (DAS)**: Six infrared sensors around the aircraft providing continuous 360-degree real-time optical coverage.
+- **Multifunction Advanced Data Link (MADL)**: Secure, low-probability-of-intercept data sharing across stealth formations.`
+            },
+            {
+                meta: "Creator Economy • Data Breakdown",
+                content: `
+# Why "Consistency" Is Bad Advice for Creators — And What Actually Compounds
+
+"Post consistently." "Show up every day." It's the first commandment of the creator economy. But empirical data reveals a sharp inflection point: posting endlessly without strategic breaks leads directly to diminishing returns.
+
+> **The data doesn't say post forever. It says post consistently until the marginal return turns negative.**
+
+---
+
+## Where Growth Actually Comes From
+
+Analysis of top-performing publications reveals that content performance follows an extreme power-law distribution:
+
+| Post Tier | Distribution Share | Audience Growth Contribution |
+| :--- | :--- | :--- |
+| **Viral Outliers** | Top 4% | 14% of New Subscribers |
+| **Core Workhorses** | 55% | 55% of New Subscribers |
+| **Negative Churn Posts** | 33% | -1% Net Loss (Audience Fatigue) |
+
+---
+
+## Three Assets That Actually Compound
+
+1. **Long-Tail Search Over Social**: Social posts have a half-life measured in minutes. SEO-optimized articles continue delivering targeted readers for years.
+2. **Specific Lead Magnets**: Giving away a high-value tool or checklist before asking for an email converts far higher than generic "subscribe" boxes.
+3. **Dedicated Onboarding**: Retention beats raw acquisition. Designing a custom welcome flow prevents subscribers from dropping off early.`
+            },
+            {
+                meta: "Conversion Strategy • Freelance & Consulting",
+                content: `
+# Why Your Portfolio Website Gets Zero Clients — And the One Page That Converts
+
+The vast majority of freelancer and consultant websites fail to generate consistent qualified leads because they are designed like art galleries rather than sales engines.
+
+---
+
+## Portfolio vs. Sales Page Performance
+
+| Page Structure | Average Monthly Leads | Project Value Multiplier |
+| :--- | :--- | :--- |
+| **Standard Gallery ("My Work")** | 0.2 | Baseline |
+| **Process Deep-Dive ("How I Work")** | 1.1 | 3.0x Baseline |
+| **Outcome Sales Page ("Hire Me")** | 4.7 | 7.7x Baseline |
+
+> **Your portfolio isn't a gallery. It's a system built to qualify and convert prospective buyers.**
+
+---
+
+## The 6 Essential Elements of a High-Converting Page
+
+- **Headline focused on outcomes**: Clearly state the exact client problem you solve and the mechanism you use.
+- **Problem Taxonomy**: Outline 3 to 5 pain points using your client's exact words.
+- **Single Flagship Case Study**: Deeply document one client result with metrics instead of displaying dozens of shallow images.
+- **Clear Process Timeline**: Show explicit steps, deliverables, and expectations to eliminate buyer risk.
+- **High-Signal Proof**: Display recognizable client logos, specific deliverable artifacts, or waitlist status.
+- **Direct Friction-Free CTA**: Provide a direct call booking link or email option rather than an uninspired generic form.`
+            }
+        ];
+
+        let activeTab = 0;
+
+        function sanitizeHtml(text) {
+            const temp = document.createElement('div');
+            temp.textContent = text;
+            return temp.innerHTML;
+        }
+
+        function renderMarkdown(md) {
+            const lines = md.trim().split('\n');
+            let out = '';
+            let inTable = false;
+
+            for (let i = 0; i < lines.length; i++) {
+                let line = lines[i].trim();
+
+                if (!line) {
+                    if (inTable) { out += '</tbody></table>'; inTable = false; }
+                    continue;
+                }
+
+                if (line.startsWith('# ')) {
+                    out += `<h1>${sanitizeHtml(line.slice(2))}</h1>`;
+                    continue;
+                }
+                if (line.startsWith('## ')) {
+                    out += `<h2>${sanitizeHtml(line.slice(3))}</h2>`;
+                    continue;
+                }
+                if (line.startsWith('### ')) {
+                    out += `<h3>${sanitizeHtml(line.slice(4))}</h3>`;
+                    continue;
+                }
+                if (line.startsWith('> ')) {
+                    out += `<blockquote>${sanitizeHtml(line.slice(2))}</blockquote>`;
+                    continue;
+                }
+                if (line === '---') {
+                    out += `<hr class="border-slate-200 my-6">`;
+                    continue;
+                }
+                if (line.startsWith('|')) {
+                    const cells = line.split('|').filter(c => c.trim() !== '').map(c => c.trim());
+                    if (cells[0].startsWith(':---') || cells[0].startsWith('---')) continue;
+
+                    if (!inTable) {
+                        inTable = true;
+                        out += '<table><thead><tr>';
+                        cells.forEach(c => out += `<th>${sanitizeHtml(c).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</th>`);
+                        out += '</tr></thead><tbody>';
+                    } else {
+                        out += '<tr>';
+                        cells.forEach(c => out += `<td>${sanitizeHtml(c).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</td>`);
+                        out += '</tr>';
+                    }
+                    continue;
+                }
+                if (line.startsWith('- ')) {
+                    out += `<ul><li>${sanitizeHtml(line.slice(2)).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</li></ul>`;
+                    continue;
+                }
+
+                let formatted = sanitizeHtml(line)
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>');
+                out += `<p>${formatted}</p>`;
+            }
+
+            if (inTable) out += '</tbody></table>';
+            return out;
+        }
+
+        function switchTab(index) {
+            activeTab = index;
+            const article = ARTICLES[index];
+
+            for (let i = 0; i < 3; i++) {
+                const tab = document.getElementById(`tab-${i}`);
+                if (i === index) {
+                    tab.className = "pb-3 border-b-2 border-brand-600 text-brand-600 font-semibold whitespace-nowrap transition-colors flex items-center gap-2";
+                } else {
+                    tab.className = "pb-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800 whitespace-nowrap transition-colors flex items-center gap-2";
+                }
+            }
+
+            document.getElementById('articleMeta').textContent = article.meta;
+            document.getElementById('articleContent').innerHTML = renderMarkdown(article.content);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function copyCurrentLink() {
+            const textarea = document.createElement('textarea');
+            textarea.value = window.location.href;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            const toast = document.getElementById('toast');
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 2200);
+        }
+
+        window.onscroll = function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("scrollProgress").style.width = scrolled + "%";
+        };
+
+        window.onload = function() {
+            lucide.createIcons();
+            switchTab(0);
+        };
+    </script>
+</body>
+</html>
